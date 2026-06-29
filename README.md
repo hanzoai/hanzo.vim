@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/hero.svg" alt="hanzo.vim" width="880"></p>
+
 # hanzo.vim
 
 [![Vim](https://img.shields.io/badge/VIM-%2311AB00.svg?style=for-the-badge&logo=vim&logoColor=white)](https://www.vim.org/) [![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)](https://neovim.io/)
