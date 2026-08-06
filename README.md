@@ -2,7 +2,6 @@
 
 [![Vim](https://img.shields.io/badge/VIM-%2311AB00.svg?style=for-the-badge&logo=vim&logoColor=white)](https://www.vim.org/) [![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)](https://neovim.io/)
 
-Fork of [dense-analysis/neural](https://github.com/dense-analysis/neural) with comprehensive Hanzo AI integration.
 
 A multi-provider AI coding agent plugin for Vim/Neovim supporting Claude, GPT-4, Gemini, Ollama, and more. Includes MCP/ZAP bridge for AI agent control and REPL integration.
 
