@@ -1,0 +1,28 @@
+# Canonical CI/CD config for hanzoai/hanzo.vim — the one file both the
+# hanzoai/ci reusable (.hanzo/workflows/cicd.yml) and platform.hanzo.ai read.
+#
+# An editor plugin: a Vim/Neovim tree plus the `neural` Python package that
+# backs it. Nothing is deployed and the Dockerfile here exists only to give
+# ./run-tests a pinned Vim/Neovim matrix to run the Vader suite inside — so no
+# `images:` and no `deploy:`, only a gate.
+#
+# The gate is the Python half, which needs no Vim and no Docker: ruff over the
+# rule set this repo actually selected (pycodestyle, isort, bugbear, builtins,
+# commas, async, boolean-trap, pyflakes, ruff, pyupgrade, mccabe) and pytest
+# over test/python, which pyproject already declares as testpaths. uv builds the
+# dev group from uv.lock, so the gate runs the pinned toolchain and not whatever
+# floats.
+#
+# Not claimed: the Vader suites (test/vim) and the linter leg. Those run in the
+# denseanalysis/neural container that ./run-tests builds, across vim-8.0,
+# vim-9.0 and neovim-0.8 — three interpreters this fleet does not have. They
+# come back when the runner can run that image, not by pretending here.
+test:
+  - name: build
+    run: |
+      set -e
+      command -v uv >/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
+      export PATH="$HOME/.local/bin:$PATH"
+      uv sync --group dev
+      uv run ruff check
+      uv run pytest -q
