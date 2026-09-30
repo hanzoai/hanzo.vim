@@ -34,6 +34,9 @@ concurrency:
 
 jobs:
   site:
+    permissions:
+      contents: read
+      id-token: write
     # NOT ubuntu-latest. These run on the in-cluster act_runner, whose fleet
     # advertises linux-amd64. A label no runner answers does not
     # fail — it queues until the 24h timeout, which is silence, not an error.
